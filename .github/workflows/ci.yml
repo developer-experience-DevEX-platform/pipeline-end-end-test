@@ -20,15 +20,6 @@ jobs:
       node_version: '24'
       has_integration_tests: true
       integration_test_command: npm run test:integration
-      integration_test_secret_source: aws-secrets-manager
-      integration_test_secret_mapping: |
-        [
-          {
-            "env": "TEST_TOKEN",
-            "secret_id": "arn:aws:secretsmanager:eu-west-2:980829302319:secret:pipeline-end-end-test/integration-0nxavk",
-            "json_key": "test_token"
-          }
-        ]
 
   container-validation:
     if: github.event_name == 'pull_request'
