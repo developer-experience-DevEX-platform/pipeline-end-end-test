@@ -1,0 +1,4 @@
+secrets:
+  - env: TEST_TOKEN
+    secret: integration
+    json_key: test_token
