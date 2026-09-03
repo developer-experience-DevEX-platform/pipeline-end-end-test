@@ -1,0 +1,25 @@
+name: Promote Production
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: Immutable Git SHA already validated in staging.
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  promote-production:
+    permissions:
+      contents: read
+    uses: developer-experience-DevEX-platform/ci-cd-templates/.github/workflows/kubernetes-gitops-production-promotion.yml@main
+    with:
+      service_name: ${{ github.event.repository.name }}
+      image_tag: ${{ inputs.image_tag }}
+      gitops_repository: developer-experience-DevEX-platform/platform-gitops
+      gitops_branch: main
+    secrets:
+      PLATFORM_GITOPS_TOKEN: ${{ secrets.PLATFORM_GITOPS_TOKEN }}
