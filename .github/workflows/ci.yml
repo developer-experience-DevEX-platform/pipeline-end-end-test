@@ -25,7 +25,7 @@ jobs:
         [
           {
             "env": "TEST_TOKEN",
-            "secret_id": "arn:aws:secretsmanager:eu-west-2:980829302319:secret:pipeline-end-end-test/unapproved-000000",
+            "secret_id": "arn:aws:secretsmanager:eu-west-2:980829302319:secret:pipeline-end-end-test/integration-0nxavk",
             "json_key": "test_token"
           }
         ]
