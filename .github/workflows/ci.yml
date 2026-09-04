@@ -18,7 +18,6 @@ jobs:
       working_directory: .
       dockerfile_path: ./Dockerfile
       node_version: '24'
-      install_command: npm ci --ignore-scripts --prefer-offline --no-audit --no-fund
       has_integration_tests: true
       integration_test_command: npm run test:integration
 
