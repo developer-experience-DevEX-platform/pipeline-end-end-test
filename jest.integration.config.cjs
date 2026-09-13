@@ -1,7 +1,7 @@
 module.exports = {
   testEnvironment: 'node',
-  testMatch: ['**/*.test.ts'],
-  testPathIgnorePatterns: ['/node_modules/', '/test/integration/'],
+  testMatch: ['**/test/integration/**/*.test.ts'],
+  testTimeout: 60_000,
   transform: {
     '^.+\\.ts$': 'babel-jest',
   },
