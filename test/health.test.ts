@@ -9,5 +9,12 @@ describe('GET /health', () => {
 
     expect(response.status).toBe(200);
     expect(response.body).toEqual({ status: 'healthy' });
+    expect(response.headers['x-powered-by']).toBeUndefined();
+  });
+
+  test('returns 404 for an unknown route', async () => {
+    const response = await request(createApp()).get('/missing');
+
+    expect(response.status).toBe(404);
   });
 });
