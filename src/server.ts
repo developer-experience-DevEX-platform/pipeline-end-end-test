@@ -1,9 +1,11 @@
 import { createApp } from './app.js';
 
-export const resolveListenAddress = () => ({
-  port: Number(process.env.PORT) || 3000,
-  host: '0.0.0.0' as const,
-});
+export const resolveListenAddress = () => {
+  const rawPort = process.env.PORT;
+  const port = rawPort === undefined || rawPort === '' ? 3000 : Number(rawPort);
+
+  return { port, host: '0.0.0.0' as const };
+};
 
 export const startServer = (
   port = resolveListenAddress().port,
@@ -15,7 +17,3 @@ export const startServer = (
     console.log(`Server listening on http://${host}:${port}`);
   });
 };
-
-if (process.env.NODE_ENV !== 'test') {
-  startServer();
-}

@@ -9,11 +9,11 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "tsx watch src/server.ts",
+    "dev": "tsx watch src/index.ts",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "eslint .",
-    "start": "node dist/server.js",
+    "start": "node dist/index.js",
     "test": "jest",
     "test:integration": "jest --config jest.integration.config.cjs"
   },

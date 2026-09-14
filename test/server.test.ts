@@ -25,12 +25,25 @@ describe('resolveListenAddress', () => {
 
     expect(resolveListenAddress()).toEqual({ port: 8080, host: '0.0.0.0' });
   });
+
+  test('treats PORT 0 as a valid port', () => {
+    process.env.PORT = '0';
+
+    expect(resolveListenAddress()).toEqual({ port: 0, host: '0.0.0.0' });
+  });
 });
 
 describe('startServer', () => {
   let server: Server | undefined;
+  const originalPort = process.env.PORT;
 
   afterEach(async () => {
+    if (originalPort === undefined) {
+      delete process.env.PORT;
+    } else {
+      process.env.PORT = originalPort;
+    }
+
     if (!server) {
       return;
     }
@@ -47,8 +60,9 @@ describe('startServer', () => {
     });
   });
 
-  test('listens and serves /health', async () => {
-    server = startServer(0);
+  test('listens on the default PORT when no port is passed', async () => {
+    process.env.PORT = '0';
+    server = startServer();
 
     await new Promise<void>((resolve, reject) => {
       server?.once('listening', resolve);
