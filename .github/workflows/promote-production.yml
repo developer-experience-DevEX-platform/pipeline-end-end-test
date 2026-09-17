@@ -15,11 +15,7 @@ jobs:
   promote-production:
     permissions:
       contents: read
-    uses: developer-experience-DevEX-platform/ci-cd-templates/.github/workflows/kubernetes-gitops-production-promotion.yml@main
+    uses: developer-experience-DevEX-platform/ci-cd-templates/.github/workflows/kubernetes-gitops-production-promotion.yml@refactor/ci-fixed-contract
+    secrets: inherit
     with:
-      service_name: ${{ github.event.repository.name }}
       image_tag: ${{ inputs.image_tag }}
-      gitops_repository: developer-experience-DevEX-platform/platform-gitops
-      gitops_branch: main
-    secrets:
-      PLATFORM_GITOPS_TOKEN: ${{ secrets.PLATFORM_GITOPS_TOKEN }}

@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -32,11 +31,5 @@ jobs:
     needs: release
     permissions:
       contents: read
-    uses: developer-experience-DevEX-platform/ci-cd-templates/.github/workflows/kubernetes-gitops-cd.yml@main
-    with:
-      service_name: ${{ github.event.repository.name }}
-      image_tag: ${{ github.sha }}
-      gitops_repository: developer-experience-DevEX-platform/platform-gitops
-      gitops_branch: main
-    secrets:
-      PLATFORM_GITOPS_TOKEN: ${{ secrets.PLATFORM_GITOPS_TOKEN }}
+    uses: developer-experience-DevEX-platform/ci-cd-templates/.github/workflows/kubernetes-gitops-cd.yml@refactor/ci-fixed-contract
+    secrets: inherit
