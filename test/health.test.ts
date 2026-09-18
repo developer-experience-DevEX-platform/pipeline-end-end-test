@@ -10,6 +10,7 @@ describe('GET /health', () => {
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
       status: 'healthy',
+      ready: true,
       service: 'pipeline-end-end-test',
     });
     expect(response.headers['x-powered-by']).toBeUndefined();

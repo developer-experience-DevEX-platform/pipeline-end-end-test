@@ -79,6 +79,7 @@ describe('startServer', () => {
     expect(response.status).toBe(200);
     await expect(response.json()).resolves.toEqual({
       status: 'healthy',
+      ready: true,
       service: 'pipeline-end-end-test',
     });
   });
