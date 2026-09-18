@@ -16,8 +16,9 @@ RUN npm run build \
 
 FROM debian:bookworm-slim AS runtime
 
-# hadolint ignore=DL3008
+# hadolint ignore=DL3008,DL3005
 RUN apt-get update \
+    && apt-get upgrade -y \
     && apt-get install --no-install-recommends -y ca-certificates \
     && rm -rf /var/lib/apt/lists/* \
     && groupadd --gid 1000 node \
