@@ -77,6 +77,9 @@ describe('startServer', () => {
     const response = await fetch(`http://127.0.0.1:${address.port}/health`);
 
     expect(response.status).toBe(200);
-    await expect(response.json()).resolves.toEqual({ status: 'healthy' });
+    await expect(response.json()).resolves.toEqual({
+      status: 'healthy',
+      service: 'pipeline-end-end-test',
+    });
   });
 });

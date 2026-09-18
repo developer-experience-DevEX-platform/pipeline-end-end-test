@@ -8,7 +8,10 @@ describe('GET /health', () => {
     const response = await request(createApp()).get('/health');
 
     expect(response.status).toBe(200);
-    expect(response.body).toEqual({ status: 'healthy' });
+    expect(response.body).toEqual({
+      status: 'healthy',
+      service: 'pipeline-end-end-test',
+    });
     expect(response.headers['x-powered-by']).toBeUndefined();
   });
 
